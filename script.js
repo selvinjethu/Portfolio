@@ -9,7 +9,15 @@ function print(text = "") {
   window.scrollTo(0, document.body.scrollHeight);
 }
 
-/* ---------- DOWNLOAD FUNCTION ---------- */
+/* ---------- MENU ---------- */
+function showMenu() {
+  print("");
+  print("Select next option: 1 2 3 4 5 6");
+  print("1 About | 2 Skills | 3 Experience | 4 Projects | 5 Contact | 6 Resume");
+  print("");
+}
+
+/* ---------- RESUME DOWNLOAD ---------- */
 function downloadResume() {
   const link = document.createElement("a");
   link.href = "Selvin_Raj_Resume.pdf";
@@ -22,22 +30,21 @@ function downloadResume() {
 /* ---------- WELCOME ---------- */
 print("╔══════════════════════════════════════╗");
 print("   SELVIN RAJ — DEVOPS TERMINAL v2");
-print("   Platform Engineer | AWS | Kubernetes");
+print("   Senior DevOps Engineer | Platform Engineering");
 print("╚══════════════════════════════════════╝");
-print("");
-print("Type 'help' or choose a menu option.");
+print("Type 'help' or choose a number.");
+showMenu();
 
-
-/* ---------- COMMANDS ---------- */
+/* ---------- COMMAND DATA ---------- */
 const commands = {
 
-  help: `
+help: `
 Available options:
 
 1 - About Me
-2 - Skills
+2 - Technical Skills
 3 - Experience
-4 - Projects
+4 - Key Projects
 5 - Contact
 6 - Download Resume
 
@@ -46,33 +53,54 @@ help  - Show menu
 clear - Clear terminal
 `,
 
-  "1": "Selvin Raj P | Senior DevOps Engineer | Platform Engineering",
+"1": `
+Selvin Raj P
+Senior DevOps Engineer | Platform Engineering | Cloud Infrastructure
 
-  "2": "AWS | EKS | OpenShift | Terraform | Helm | Jenkins | GitHub Actions | ArgoCD | Python",
-
-  "3": "Wipro | Cotiviti | Capgemini | Aggregate Intelligence | TNCA",
-
-  "4": `
-- Kubernetes Platform Modernization
-- Enterprise CI/CD Automation Framework
-- OpenShift Platform Engineering
+8+ years experience in:
+- AWS cloud infrastructure
+- Kubernetes / OpenShift platforms
+- CI/CD automation
+- GitOps & Infrastructure as Code
 `,
 
-  "5": "Email: selvinjethu@gmail.com | Tamil Nadu, India",
-
-  "6": "Downloading resume...",
-
-  /* text commands */
-  about: "Selvin Raj P | Senior DevOps Engineer | Platform Engineering",
-  skills: "AWS | EKS | OpenShift | Terraform | Helm | Jenkins | GitHub Actions | ArgoCD | Python",
-  experience: "Wipro | Cotiviti | Capgemini | Aggregate Intelligence | TNCA",
-  projects: `
-- Kubernetes Platform Modernization
-- Enterprise CI/CD Automation Framework
-- OpenShift Platform Engineering
+"2": `
+Cloud: AWS, Azure, GCP
+Containers: Kubernetes, EKS, OpenShift, Docker
+CI/CD: Jenkins, GitHub Actions, ArgoCD, Harness
+IaC: Terraform, Helm, Ansible, Python
+Observability: Prometheus, Grafana, CloudWatch, Splunk
+Security: SonarQube, Veracode, IAM
 `,
-  contact: "Email: selvinjethu@gmail.com | Tamil Nadu, India",
-  resume: "Downloading resume..."
+
+"3": `
+Wipro (Technical Lead / Senior DevOps Engineer) — 2025-Present
+Cotiviti — Senior DevOps Engineer
+Capgemini — Consultant DevOps Engineer
+Aggregate Intelligence — DevOps & Cloud Engineer
+TNCA Club — System Administrator
+`,
+
+"4": `
+- Kubernetes Platform Modernization (EKS migration)
+- Enterprise CI/CD Automation Framework
+- OpenShift Platform Engineering & Upgrades
+`,
+
+"5": `
+Tamil Nadu, India
+Email: selvinjethu@gmail.com
+Role Focus: Platform Engineering | SRE | Cloud Infra
+`,
+
+"6": "Downloading resume...",
+
+about: "Use option 1",
+skills: "Use option 2",
+experience: "Use option 3",
+projects: "Use option 4",
+contact: "Use option 5",
+resume: "Downloading resume..."
 };
 
 /* ---------- INPUT HANDLER ---------- */
@@ -82,10 +110,11 @@ input.addEventListener("keydown", function (e) {
 
     const cmd = input.value.trim().toLowerCase();
 
-    print("selvin@cloud-architect:~$ " + cmd);
+    print("selvin@cloud-space:~$ " + cmd);
 
     if (cmd === "clear") {
       output.innerHTML = "";
+      showMenu();
       input.value = "";
       return;
     }
@@ -93,19 +122,22 @@ input.addEventListener("keydown", function (e) {
     if (cmd === "6" || cmd === "resume") {
       print("Downloading resume...");
       downloadResume();
+      showMenu();
       input.value = "";
       return;
     }
 
     if (commands[cmd]) {
       print(commands[cmd]);
+      showMenu();
     } else {
-      print("command not found (type 'help')");
+      print("command not found (type help)");
+      showMenu();
     }
 
     input.value = "";
   }
 });
 
-/* keep focus */
+/* ---------- FOCUS INPUT ---------- */
 window.addEventListener("click", () => input.focus());

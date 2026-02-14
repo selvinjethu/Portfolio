@@ -1,0 +1,23 @@
+body {
+  margin: 0;
+  background: #000;
+  color: #00ff66;
+  font-family: monospace;
+}
+#terminal {
+  padding: 20px;
+  height: 100vh;
+  overflow-y: auto;
+}
+#output div { line-height: 1.5; white-space: pre-wrap; }
+#input-line { display: flex; align-items: center; gap: 8px; }
+.prompt { white-space: nowrap; }
+input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #00ff66;
+  font-family: monospace;
+  caret-color: #00ff66;
+}

@@ -20,11 +20,13 @@ function downloadResume() {
 }
 
 /* ---------- WELCOME ---------- */
-print("Architect DevOps Terminal");
-print("Welcome Selvin Raj P Portfolio");
-print("Type 'help' or select number:");
-print("1 About | 2 Skills | 3 Experience | 4 Projects | 5 Contact | 6 Resume");
+print("╔══════════════════════════════════════╗");
+print("   SELVIN RAJ — DEVOPS TERMINAL v2");
+print("   Platform Engineer | AWS | Kubernetes");
+print("╚══════════════════════════════════════╝");
 print("");
+print("Type 'help' or choose a menu option.");
+
 
 /* ---------- COMMANDS ---------- */
 const commands = {
@@ -80,7 +82,7 @@ input.addEventListener("keydown", function (e) {
 
     const cmd = input.value.trim().toLowerCase();
 
-    print("selvin@architect:/home/devops$ " + cmd);
+    print("selvin@cloud-architect:~$ " + cmd);
 
     if (cmd === "clear") {
       output.innerHTML = "";
